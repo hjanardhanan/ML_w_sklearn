@@ -1,3 +1,8 @@
+# Do clustering to :
+# 1. Predict if CPU or GPU (Binary classifier)
+# 2. Predict vendor  (multi-class classifier)
+# 3. Predict the Foundry (multi-class classifier)
+
 import sys
 import os
 # Hack

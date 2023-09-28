@@ -6,7 +6,7 @@ import sys
 import os
 
 from sklearn import linear_model
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn import metrics
 
 # Hack
@@ -44,9 +44,11 @@ class LogisticReg :
     
     def evaluate(self, mode, y_pred) :
         print ("Evaluating .. ")
-        acc = metrics.accuracy_score(self.y_test, y_pred)
-        print ("Accuracy = ", acc*100)
+        report = metrics.classification_report(self.y_test, y_pred)
+        print (report)
+        scores = cross_val_score(self.model, self.X_train, self.y_train, cv = 5)
+        print ("CV scores = ",scores)
     
 # Test 
-LogisticReg('chip_dataset_cleaned.csv', 'binary')
-# LogisticReg('chip_dataset_cleaned.csv', 'multi')
+# LogisticReg('chip_dataset_cleaned.csv', 'binary')
+LogisticReg('chip_dataset_cleaned.csv', 'multi')

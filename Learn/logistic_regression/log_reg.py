@@ -19,7 +19,7 @@ class LogisticReg :
         df = data_reader.DataReader().pd_read(filename)
         self.clean_n_split(df, mode)
         self.train(mode)
-        self.test(mode)
+        self.evaluate(mode, self.predict(mode))
     
     def clean_n_split(self, df, mode) :
         print ("Cleaning and splitting .. ")
@@ -37,11 +37,16 @@ class LogisticReg :
         print ("Training .. ")
         self.model = linear_model.LogisticRegression(random_state=22).fit(self.X_train, self.y_train)
     
-    def test(self, mode) :
-        print ("Testing .. ")
+    def predict(self, mode) :
+        print ("Predicting .. ")
         y_pred = self.model.predict(self.X_test)
+        return y_pred
+    
+    def evaluate(self, mode, y_pred) :
+        print ("Evaluating .. ")
         acc = metrics.accuracy_score(self.y_test, y_pred)
         print ("Accuracy = ", acc*100)
     
 # Test 
 LogisticReg('chip_dataset_cleaned.csv', 'binary')
+# LogisticReg('chip_dataset_cleaned.csv', 'multi')

@@ -6,12 +6,12 @@ if os.path.abspath(os.path.join(os.path.dirname(__file__), '..')) not in sys.pat
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sklearn import svm
-from classifier_base import cbase
+from classifier_base.cbase import Classifier_Base
 from sklearn.model_selection import GridSearchCV
 import numpy as np
 from sklearn.metrics import precision_score, make_scorer
 
-class Svc(cbase.Classifier_Base) :
+class Svc(Classifier_Base) :
     def __init__(self, filename, mode) -> None:
         super().__init__(filename, mode)
         model = self.train(mode)

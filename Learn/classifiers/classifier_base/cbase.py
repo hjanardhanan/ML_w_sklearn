@@ -29,7 +29,9 @@ class Classifier_Base :
         print ("Evaluate .. ")
         y_pred = model.predict(self.X_test)
         report = metrics.classification_report(self.y_test, y_pred)
+        print (" \n------------------- Classification Report ---------------- \n")
         print(report)
+        print (" ---------------------------------------------------------- \n")
         scores = cross_val_score(model, self.X_train, self.y_train, cv = 5)
         print("CV score = ", scores)
 

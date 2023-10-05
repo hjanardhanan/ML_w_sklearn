@@ -49,5 +49,5 @@ class DTree(Classifier_Base) :
                 global_score = sc
         return dtc
         
-# DTree('chip_dataset_cleaned.csv', 'binary')
-DTree('chip_dataset_cleaned.csv', 'multi')
+DTree('chip_dataset_cleaned.csv', 'binary')
+# DTree('chip_dataset_cleaned.csv', 'multi')

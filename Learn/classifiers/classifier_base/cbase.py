@@ -32,6 +32,8 @@ class Classifier_Base :
         print (" \n------------------- Classification Report ---------------- \n")
         print(report)
         print (" ---------------------------------------------------------- \n")
+        print("Classes : ", model.classes_)
+        print (" ---------------------------------------------------------- \n")
         scores = cross_val_score(model, self.X_train, self.y_train, cv = 5)
         print("CV score = ", scores)
 

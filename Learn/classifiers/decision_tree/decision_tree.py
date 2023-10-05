@@ -4,7 +4,6 @@ if os.path.abspath(os.path.join(os.path.dirname(__file__), '..')) not in sys.pat
 
 from sklearn import tree
 from classifier_base.cbase import Classifier_Base
-import matplotlib.pyplot as plt
 
 class DTree(Classifier_Base) :
     def __init__(self, filename, mode) -> None:

@@ -20,6 +20,7 @@ class Classifier_Base :
         target_cols = 'Foundry' if mode != 'binary' else 'Type'
         df.drop(drop_col, axis = 1, inplace = True)
         # Training data columns
+        # TBD: Explore Stratified splitting
         train_cols = list(set(df.columns) - set([target_cols]))
         self.X_train, self.X_test, self.y_train, self.y_test = \
             train_test_split(df.loc[:, train_cols], df.loc[:, target_cols], \

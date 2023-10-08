@@ -17,13 +17,17 @@ class NaiveBayes(Classifier_Base) :
                         var_smoothing=1e-9
                     ).fit(self.X_train, self.y_train)
         
-        multi_clf = MultinomialNB(
-                        alpha=1,
-                        fit_prior=True,
-                        class_prior=None
-                    ).fit(self.X_train, self.y_train)
+        # Multi doesnt work with negative values in dataset
+        # multi_clf = MultinomialNB(
+        #                 alpha=1,
+        #                 fit_prior=True,
+        #                 class_prior=None
+        #             ).fit(self.X_train, self.y_train)
         
     
         # Print some info
 
-        return clf
+        return gauss_clf
+    
+
+NaiveBayes('chip_dataset_cleaned.csv', 'binary')

@@ -19,5 +19,12 @@ class RegressionBase :
 
     def evaluate(self, model) :
         print ("Evaluating regression model ..")
+        y_pred = model.predict(self.X_test)
+        scores = dict()
+        scores['mse'] = metrics.mean_squared_error(y_pred, self.y_test)
+        scores['rmse'] = metrics.mean_squared_error(y_pred, self.y_test, squared=False)
+        scores['mae'] = metrics.mean_absolute_error(y_pred, self.y_test)
+        print (" ========= SCORES ======== ")
+        print (scores)
 
 RegressionBase('scrap_price_cleaned.csv')

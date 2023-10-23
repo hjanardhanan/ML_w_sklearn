@@ -2,11 +2,14 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn import metrics
+import os
 
 class RegressionBase :
     def __init__(self, filename) :
-        df = pd.read_csv('./Learn/regression/data/' + filename)
-        self.target_col = ['price']
+        curr_path = os.path.abspath(os.path.join(os.path.dirname(__file__)))
+        file = os.path.join(curr_path, 'data', filename)
+        df = pd.read_csv(file)
+        self.target_col = ['passthru_price__price']
         self.train_cols = list(set(df.columns) - set(self.target_col))
         self.test_train_split(df)
 
@@ -26,5 +29,3 @@ class RegressionBase :
         scores['mae'] = metrics.mean_absolute_error(y_pred, self.y_test)
         print (" ========= SCORES ======== ")
         print (scores)
-
-RegressionBase('scrap_price_cleaned.csv')
